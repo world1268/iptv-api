@@ -254,7 +254,7 @@ jobs:
               "The upstream Pages site provides subscription URLs and previews, with Download buttons pointing to this Release. Its results and logs are for functional testing only. Content completeness, availability, and continued updates are not guaranteed. For actual use, [Fork the project](https://github.com/Guovin/iptv-api/fork) and run your own workflow." \
               "$pages_link"
           fi
-
+          find release-assets -maxdepth 1 -type f -empty -delete
           mapfile -d '' local_assets < <(find release-assets -maxdepth 1 -type f -print0 | sort -z)
           gh release create "$RELEASE_TAG" "${local_assets[@]}" \
             --repo "$GITHUB_REPOSITORY" \
